@@ -1,6 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import { User } from './user';
-import { UserDTO } from './user.dto';
+import { RequestUserDTO } from './request.user.dto';
 import { UserTokenService } from './token/user-token.service';
 import { UserToken } from './token/user-token';
 import { _ } from 'lodash';
@@ -16,15 +16,15 @@ export class UserService {
     private readonly userTokenService: UserTokenService,
   ) { }
 
-  findUser(user: UserDTO): User {
-    if (_.isEmpty(user)) {
-      return undefined;
+  findUser(requestUserDTO: RequestUserDTO): User {
+    if (_.isEmpty(requestUserDTO)) {
+      return null;
     }
 
-    return _.find(this.users, user);
+    return _.find(this.users, requestUserDTO);
   }
 
   getToken(): UserToken {
-    return this.userTokenService.generateToken().getUserToken();
+    return this.userTokenService.generateToken();
   }
 }

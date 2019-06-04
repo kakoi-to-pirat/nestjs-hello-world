@@ -14,9 +14,7 @@ describe('UserService', () => {
     describe('get/set Token', () => {
         it('should return UserToken', () => {
             const userTokenService = app.get<UserTokenService>(UserTokenService);
-
-            expect(userTokenService.generateToken()).toBeInstanceOf(UserTokenService);
-            expect(userTokenService.getUserToken()).toBeInstanceOf(UserToken);
+            expect(userTokenService.generateToken()).toBeInstanceOf(UserToken);
         });
     });
 

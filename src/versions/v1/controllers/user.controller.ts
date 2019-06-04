@@ -1,6 +1,6 @@
 import { Controller, Post, Req, Res, Body, HttpStatus } from '@nestjs/common';
 import { UserService } from '../../../common/user/user.service';
-import { UserDTO } from '../../../common/user/user.dto';
+import { RequestUserDTO } from '../../../common/user/request.user.dto';
 import { Request, Response } from 'express';
 
 @Controller('v1/user')
@@ -10,15 +10,14 @@ export class UserController {
   ) { }
 
   @Post('login')
-  login(@Body() user: UserDTO, @Res() res: Response) {
-    const isUserExists = !!this.userService.findUser(user);
+  login(@Body() requestUserDTO: RequestUserDTO, @Res() res: Response) {
+    const user = this.userService.findUser(requestUserDTO);
 
-    if (!isUserExists) {
-      res.status(HttpStatus.UNAUTHORIZED).json({
-        "statusCode": 401,
+    if (!user) {
+      return res.status(HttpStatus.UNAUTHORIZED).json({
+        "statusCode": HttpStatus.UNAUTHORIZED,
         "error": "Unauthorized"
       });
-      return;
     }
 
     const userToken = this.userService.getToken();
