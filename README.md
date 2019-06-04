@@ -11,5 +11,6 @@ $ npm run start:dev
 
 ## Тесты
 ```bash
-$ npm run test
+$ npm test
+$ npm run test:e2e
 ```
