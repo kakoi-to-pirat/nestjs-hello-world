@@ -17,6 +17,10 @@ export class UserService {
   ) { }
 
   findUser(user: UserDTO): User {
+    if (_.isEmpty(user)) {
+      return undefined;
+    }
+
     return _.find(this.users, user);
   }
 

@@ -24,6 +24,7 @@ describe('UserService', () => {
             expect(userService.findUser({ email: 'admin@admin.ru', password: '12345678' })).toBeInstanceOf(User);
             expect(userService.findUser({ email: 'user@user.ru', password: '87654321' })).toBeInstanceOf(User);
             expect(userService.findUser({ email: 'fake@user.ru', password: '000' })).toBeUndefined();
+            expect(userService.findUser({ email: '', password: '' })).toBeUndefined();
         });
     });
 
