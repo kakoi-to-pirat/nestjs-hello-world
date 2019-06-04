@@ -21,9 +21,7 @@ export class UserService {
   }
 
   getToken(): UserToken {
-    this.userTokenService.generateToken();
-    const token = this.userTokenService.getUserToken();
-
+    const token = this.userTokenService.generateToken().getUserToken();
     return token;
   }
 }

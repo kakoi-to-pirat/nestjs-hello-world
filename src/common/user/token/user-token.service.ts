@@ -16,8 +16,10 @@ export class UserTokenService {
         return this.userToken;
     }
 
-    generateToken(): void {
+    generateToken(): any {
         const token = randomstring.generate();
         this.setUserToken(token);
+
+        return this;
     }
 }
