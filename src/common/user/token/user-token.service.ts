@@ -12,7 +12,7 @@ export class UserTokenService {
         this.userToken.token = token;
     }
 
-    generateToken(): any {
+    generateToken(): UserToken {
         const token = randomstring.generate();
 
         this.setUserToken(token);
