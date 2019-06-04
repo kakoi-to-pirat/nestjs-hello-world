@@ -8,7 +8,7 @@ export class UserTokenService {
         private readonly userToken: UserToken,
     ) { }
 
-    setUserToken(token: string): void {
+    private setUserToken(token: string): void {
         this.userToken.token = token;
     }
 
@@ -18,8 +18,8 @@ export class UserTokenService {
 
     generateToken(): any {
         const token = randomstring.generate();
-        this.setUserToken(token);
 
+        this.setUserToken(token);
         return this;
     }
 }
