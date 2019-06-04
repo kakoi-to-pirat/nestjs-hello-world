@@ -27,12 +27,10 @@ describe('UserService', () => {
         });
     });
 
-
     describe('getToken', () => {
         it('should return UserToken', () => {
             const userService = app.get<UserService>(UserService);
             expect(userService.getToken()).toBeInstanceOf(UserToken);
         });
     });
-
 });
