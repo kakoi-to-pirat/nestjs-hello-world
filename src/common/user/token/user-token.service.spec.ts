@@ -17,5 +17,4 @@ describe('UserService', () => {
             expect(userTokenService.generateToken()).toBeInstanceOf(UserToken);
         });
     });
-
 });
