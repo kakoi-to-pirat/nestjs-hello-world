@@ -10,21 +10,18 @@ export class UserController {
   ) { }
 
   @Post('login')
-  async login(
-    @Query() user: UserDTO,
-    @Res() res: Response
-  ) {
-    const userToken = await this.userService.getToken(user);
+  login(@Query() user: UserDTO, @Res() res: Response) {
+    const isUserExists = !!this.userService.findUser(user);
 
-    if (!userToken) {
+    if (!isUserExists) {
       res.status(HttpStatus.UNAUTHORIZED).json({
         "statusCode": 401,
         "error": "Unauthorized"
       });
+      return;
     }
 
-    res.status(HttpStatus.OK).json({
-      "token": userToken
-    });
+    const userToken = this.userService.getToken();
+    res.status(HttpStatus.OK).json(userToken);
   }
 }
