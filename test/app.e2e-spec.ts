@@ -40,7 +40,8 @@ describe('AppController (e2e)', () => {
 
   it('/user/login (POST)', () => {
     return request(app.getHttpServer())
-      .post('/v1/user/login?email=fake@user.ru&password=0000')
+      .post('/v1/user/login')
+      .send({ email: 'fake@user.ru', password: '00000' })
       .expect('Content-Type', /json/)
       .expect(401, {
         "statusCode": 401,

@@ -1,4 +1,4 @@
-import { Controller, Post, Req, Res, Query, HttpStatus } from '@nestjs/common';
+import { Controller, Post, Req, Res, Body, HttpStatus } from '@nestjs/common';
 import { UserService } from '../../../common/user/user.service';
 import { UserDTO } from '../../../common/user/user.dto';
 import { Request, Response } from 'express';
@@ -10,7 +10,7 @@ export class UserController {
   ) { }
 
   @Post('login')
-  login(@Query() user: UserDTO, @Res() res: Response) {
+  login(@Body() user: UserDTO, @Res() res: Response) {
     const isUserExists = !!this.userService.findUser(user);
 
     if (!isUserExists) {
