@@ -23,6 +23,7 @@
     "@nestjs/core": "^5.4.0",
     "@nestjs/microservices": "^5.4.0",
     "@nestjs/websockets": "^5.4.0",
+    "lodash": "^4.17.11",
     "randomstring": "^1.1.5",
     "reflect-metadata": "^0.1.12",
     "rimraf": "^2.6.3",
