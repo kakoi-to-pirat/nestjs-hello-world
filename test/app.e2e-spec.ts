@@ -24,7 +24,16 @@ describe('AppController (e2e)', () => {
 
   it('/user/login (POST)', () => {
     return request(app.getHttpServer())
-      .post('/v1/user/login?email=admin@admin.ru&password=12345678')
+      .post('/v1/user/login')
+      .send({ email: 'admin@admin.ru', password: '12345678' })
+      .expect('Content-Type', /json/)
+      .expect(200)
+  });
+
+  it('/user/login (POST)', () => {
+    return request(app.getHttpServer())
+      .post('/v1/user/login')
+      .send({ email: 'user@user.ru', password: '87654321' })
       .expect('Content-Type', /json/)
       .expect(200)
   });
