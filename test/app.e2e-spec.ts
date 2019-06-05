@@ -48,4 +48,26 @@ describe('App (e2e)', () => {
         "error": "Unauthorized"
       });
   });
+
+  it('/user/login (POST)', () => {
+    return request(app.getHttpServer())
+      .post('/v1/user/login')
+      .send({ fake: 'fake@user.ru', password: '00010', antoher: 12 })
+      .expect('Content-Type', /json/)
+      .expect(401, {
+        "statusCode": 401,
+        "error": "Unauthorized"
+      });
+  });
+
+  it('/user/login (POST)', () => {
+    return request(app.getHttpServer())
+      .post('/v1/user/login')
+      .send({ })
+      .expect('Content-Type', /json/)
+      .expect(401, {
+        "statusCode": 401,
+        "error": "Unauthorized"
+      });
+  });
 });
