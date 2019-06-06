@@ -8,14 +8,10 @@ export class UserTokenService {
         private readonly userToken: UserToken,
     ) { }
 
-    private setUserToken(token: string): void {
-        this.userToken.token = token;
-    }
-
     generateToken(): UserToken {
         const token = randomstring.generate();
 
-        this.setUserToken(token);
+        this.userToken.setToken(token);
         return this.userToken;
     }
 }
